@@ -47,7 +47,7 @@ for index, row in df.iterrows():
 
     cbsa = None
     for cbsa_index, cbsa_row in cbsa_file.iterrows():
-        print("running")
+        print("running " + "CBSA: " + str(cbsa_index) + " Main File: " + str(index))
         if cbsa_row["ZIP"] == row["Zip"]:
             cbsa = cbsa_row["CBSA"]
             break
@@ -80,7 +80,7 @@ for index, row in df.iterrows():
         )
     
 # Save as JSON
-print(final_result)
+print("Susessfully Hacked CIA")
 
 with open('results.json', 'w') as result_file:
     json.dump(final_result, result_file)
