@@ -47,11 +47,13 @@ for index, row in df.iterrows():
 
     cbsa = None
     for cbsa_index, cbsa_row in cbsa_file.iterrows():
-        print("running " + "CBSA: " + str(cbsa_index) + " Main File: " + str(index))
-        if cbsa_row["ZIP"] == row["Zip"]:
-            cbsa = cbsa_row["CBSA"]
+        if int(cbsa_row["ZIP"]) == int(row["Zip"]):
+            # print("Found it!")
+            # print(index)
+            cbsa = int(cbsa_row["CBSA"])
+            # print(cbsa)
             break
-
+    print(cbsa)
 # Get the validated zips
 
     validated_zips = []
@@ -80,7 +82,9 @@ for index, row in df.iterrows():
         )
     
 # Save as JSON
-print("Susessfully Hacked CIA")
+print("Successfully Hacked CIA")
+print(final_result[2])
 
 with open('results.json', 'w') as result_file:
     json.dump(final_result, result_file)
+    print("dumped")
